@@ -1,0 +1,54 @@
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
+<p-messages [value]="msgs"></p-messages>
+
+<div class="row">
+  <div class="col-7">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">UserId</th>
+          <th scope="col">Id</th>
+          <th scope="col">Title</th>
+          <th scope="col">Body</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let e of employee">
+        <tr>
+          <th>{{e.userId}}</th>
+          <td>{{e.id}}</td>
+          <td>{{e.title}}</td>
+          <td>{{e.body}}</td>
+          <td class="btn-group">
+            <button [disabled]="isDisabled(e.id)" class="btn btn-info mr-2" (click)="selectEmployee(e.id)">Select</button>
+            <button pButton (click)="deleteEmployeee(e.id)" type="button" label="Delete" class="p-button-danger"></button>
+            <!-- <p-button class="ui-button-danger" (click)="confirm1()" icon="pi pi-check" label="Confirm"></p-button> -->
+            <!-- <button class="btn btn-danger" (click)="deleteEmployeee(e.id, template)">Delete</button> -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-4 mt-5"  *ngIf="selectEmploye">
+    <ul class="list-group mt-2" *ngFor="let s of selectEmploye">
+      <li class="list-group-item">UserId: {{s.userId}}</li>
+      <li class="list-group-item">Id: {{s.id}}</li>
+      <li class="list-group-item">{{s.title}}</li>
+      <li class="list-group-item">{{s.body}}</li>
+      <li class="list-group-item">
+        <button class="btn btn-warning" (click)="unselect(s.id)">Unselect</button>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<ng-template #template>
+  <div class="modal-body text-center">
+    <p>Do you want to confirm?</p>
+    <button type="button" class="btn btn-default" (click)="confirm(selectedId)" >Yes</button>
+    <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+  </div>
+</ng-template>
+
+
+

@@ -1,0 +1,100 @@
+<!-- <div class="row">
+  <div class="col">
+    <h1>Counter Detail
+      <h3 *ngIf=counter>{{counter}}</h3>
+    </h1>
+
+    <button class="btn btn-primary mr-2" (click)="increment()">+</button>
+    <button class="btn btn-danger" (click)="decrement()">-</button>
+
+    <pre>{{cartInfo | json}}</pre>
+    <pre>Total list of itmes: <strong>{{sumOfCartList}}</strong> </pre>
+  </div>
+  <div class="col mt-3">
+    <div *ngFor="let cart of cartInfo" class="mb-2">
+      <button class="btn btn-primary mr-2 " (click)="incrementItem(cart.id)">+</button>
+      <button class="btn btn-danger" (click)="decrementItem(cart.id)">-</button>
+    </div>
+  </div>
+</div> -->
+
+
+
+<!--
+<div class="row">
+  <div class="col-4">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Cart Items</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cart of counter ">
+          <th>{{cart.id}}</th>
+          <td>{{cart.quantity}}</td>
+          <td>
+            <button class="btn btn-primary mr-2 " (click)="incrementItem(cart)">+</button>
+            <button class="btn btn-danger" (click)="decrementItem(cart)">-</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<button class="btn btn-info" (click)="addNew(data)">Add New</button> -->
+
+
+
+
+
+<div class="row">
+  <div class="col-4">
+<table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Cart Items</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let control of angForm.controls; let i = index;">
+          <ng-container [formGroup]="control" >
+            <th>{{control.get('id').value}}</th>
+            <td>
+              <input formControlName="quantity" class="form-control">
+            </td>
+            <td>
+              <button class="btn btn-primary mr-2 " (click)="incrementItem(control.value)">+</button>
+              <button class="btn btn-danger" (click)="decrementItem(control.value)">-</button>
+            </td>
+          </ng-container>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div>
+  <button type="submit" class="btn btn-info mt-2 mb-2 ml-5" (click)="onFormSubmit()">Send</button>
+</div>
+
+<h5 class="ml-5">Total Items: <strong>{{sumOfCartList}}</strong> </h5>
+
+
+<!-- <form [formGroup]="angForm" (ngSubmit)="onFormSubmit()">
+  <div formArrayName="names">
+    <div *ngFor="let name of names.controls; index as idx">
+      <input [formControlName]="idx" placeholder="Enter a Name" class="form-control">
+      <label *ngIf="name.invalid" [ngClass]="'error'"> Name is required. </label>
+    </div>
+  </div>
+  <div>
+    <button type="submit" class="btn btn-info">Send</button>
+  </div>
+</form> -->

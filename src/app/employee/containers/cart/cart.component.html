@@ -1,0 +1,3 @@
+<app-cart-detail [counter]="counter1$ | async" [counter1]="counter$ | async" (incrementedValue)="increment()"
+  (decrementedValue)="decrement()" (incrementedItemValue)="incrementItem($event)"
+  (decrementedItemValue)="decrementItem($event)" (addNewItem)="addNewItem($event)"></app-cart-detail>

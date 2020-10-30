@@ -1,0 +1,4 @@
+<app-employee-detail [selectEmploye]="selectedEmployee$ | async" [employee]="employee$ | async"
+  (selectedEmployee)="selectEmployee($event)" (unselectedEmployee)="unselectEmployee($event)"
+  (deleteEmployee)="deleteEmployee($event)"
+   ></app-employee-detail>
